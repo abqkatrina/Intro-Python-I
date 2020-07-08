@@ -12,9 +12,9 @@ class Latlon:
 
 class Waypoint(Latlon):
 
-    def __init__(self, name, *args, **kwargs):
+    def __init__(self, name, lat, lon):
         self.name = name
-        super(Waypoint, self).__init__(*args, **kwargs)
+        super().__init__(lat, lon)
 
     def __str__(self):
         return "{self.name}, {self.lat}, {self.lon}".format(self=self)
@@ -24,14 +24,14 @@ class Waypoint(Latlon):
 # `size`, `lat`, and `lon` to the constructor. What should it inherit from?
 
 class Geocache(Waypoint):
-    def __init__(self, difficulty, size, *args, **kwargs):
+    def __init__(self, difficulty, size, name, lat, lon):
         self.difficulty = difficulty
         self.size = size
-        super(Geocache, self).__init__(*args, **kwargs)
+        super().__init__(name, lat, lon)
 
     def __str__(self):
         return "{self.name}, {self.difficulty}, {self.size}, {self.lat}, {self.lon}".format(self=self)
-
+#^^^^^^^^^ THIS IS PRINTING SIZE BEFORE NAME ETC...???
 # Make a new waypoint and print it out: "Catacombs", 41.70505, -121.51521
 
 waypoint = Waypoint("Catacombs", 41.70505, -121.51521)
