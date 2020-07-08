@@ -12,9 +12,10 @@ class Latlon:
 
 class Waypoint(Latlon):
 
-    def __init__(self, name, lat, lon):
-        self.name = name
+    def __init__(self, lat, lon, name):
         super().__init__(lat, lon)
+        self.name = name
+        
 
     def __str__(self):
         return "{self.name}, {self.lat}, {self.lon}".format(self=self)
@@ -24,17 +25,18 @@ class Waypoint(Latlon):
 # `size`, `lat`, and `lon` to the constructor. What should it inherit from?
 
 class Geocache(Waypoint):
-    def __init__(self, difficulty, size, name, lat, lon):
+    def __init__(self, lat, lon, name, difficulty, size):
+        super().__init__(lat, lon, name)
         self.difficulty = difficulty
         self.size = size
-        super().__init__(name, lat, lon)
+        
 
     def __str__(self):
         return "{self.name}, {self.difficulty}, {self.size}, {self.lat}, {self.lon}".format(self=self)
 #^^^^^^^^^ THIS IS PRINTING SIZE BEFORE NAME ETC...???
 # Make a new waypoint and print it out: "Catacombs", 41.70505, -121.51521
 
-waypoint = Waypoint("Catacombs", 41.70505, -121.51521)
+waypoint = Waypoint( 41.70505, -121.51521, "Catacombs")
 print(waypoint)
 
 # Without changing the following line, how can you make it print into something
@@ -45,7 +47,7 @@ print(waypoint)
 
 # Make a new geocache "Newberry Views", diff 1.5, size 2, 44.052137, -121.41556
 
-geocache = Geocache("Newberry Views", 1.5, 2, 44.052137, -121.41556)
+geocache = Geocache(44.052137, -121.41556, "Newberry Views", 1.5, 2)
 
 # Print it--also make this print more nicely
 #>>>>>>>> ^32
